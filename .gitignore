@@ -1,0 +1,7 @@
+bin
+UnitTests/bin
+UnitTests/Fakes
+UnitTests/FakesAssemblies
+UnitTests/obj
+UnitTests/Properties
+*.csproj
