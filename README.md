@@ -1,7 +1,7 @@
 ﻿Namara
 ======
 
-The official C# client for the Namara Open Data service. [namara.io](http://namara.io)
+The official C# client for the Namara Open Data service. [namara.io](https://namara.io)
 Disclaimer: This wrapper is built using .Net 2.0. It may not work on newer versions of .Net.
 
 ## Installation
@@ -20,7 +20,7 @@ If using Unity, add Newtonsoft to the /plugins folder.
 You need a valid API key in order to access Namara (you can find it in your My Account details on namara.io).
 
 ```csharp
-using ThinkData
+using ThinkData;
 using Newtonsoft.Json.Linq;
 
 Namara namara = new Namara({YOUR_API_KEY});
@@ -34,34 +34,34 @@ Namara namara = new Namara({YOUR_API_KEY}, true);
 
 ### Getting Data
 
-To make a basic request to the Namara API you can call `get` on your instantiated object and pass it the ID of the dataset you want and the ID of the version of the data set:
+To make a basic request to the Namara API you can call `get` on your instantiated object and pass it the ID of the data set you want and the version of the data set:
 
 Synchronous:
 
 ```csharp
-var response = namara.Get<List<JObject>>("18b854e3-66bd-4a00-afba-8eabfc54f524", "en-2");
+var response = namara.Get<List<JObject>>("5885fce0-92c4-4acb-960f-82ce5a0a4650", "en-1");
 ```
 
-Without a third options argument passed, this will return data with the Namara default offset (0) and limit (10) applied. To specify options, you can pass an options argument:
+Without a third options argument passed, this will return data with the Namara default offset (0) and limit (250) applied. To specify options, you can pass an options argument:
 
 ```csharp
 Hashtable options = new Hashtable {{"offset", "1"}, {"limit", "20"}};
 
-var response = namara.Get<List<JObject>>("18b854e3-66bd-4a00-afba-8eabfc54f524", "en-2", options);
+var response = namara.Get<List<JObject>>("5885fce0-92c4-4acb-960f-82ce5a0a4650", "en-1", options);
 ```
 
 ### Options
 
-All [Namara data options](http://namara.io/#/api) are supported.
+All [Namara data options](https://namara.io/#/api) are supported.
 
 **Basic options**
 
 ```csharp
 Hashtable options = new Hashtable();
-options.Add("select", "p0,p1");
-options.Add("where", "p0 = 100 AND nearby(p3, 43.25, -123.1, 10km)");
+options.Add("select", "town,geometry");
+options.Add("where", "town = "TORONTO" AND nearby(geometry, 43.6, -79.4, 10km)");
 options.Add("offset", "0");
-options.Add("limit", "150");
+options.Add("limit", "20");
 ```
 
 **Aggregation options**
@@ -81,3 +81,7 @@ options.Add("operation", "geobounds(p3)");
 ### Running Tests
 
 Use Visual Studio to run the tests. Make sure to add Microsoft.VisualStudio.QualityTools.UnitTestFramework to the references.
+
+### License
+
+Apache License, Version 2.0

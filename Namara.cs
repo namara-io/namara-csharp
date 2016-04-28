@@ -8,7 +8,7 @@ namespace ThinkData
 {
 	/// <summary>
 	/// Wrapper for the Namara API.
-	/// All Namara data options are supported: http://namara.io/#/api
+	/// All Namara data options are supported: https://namara.io/#/api
 	/// </summary>
 	public class Namara {
 
@@ -38,7 +38,7 @@ namespace ThinkData
             {
                 option_path += "/aggregation?api_key=" + this.apiKey + "&" + parameters_string;
             }
-            string url = "http://" + this.namara_options["host"] + option_path;
+            string url = "https://" + this.namara_options["host"] + option_path;
             if (this.debug) System.Console.WriteLine(url);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = this.namara_options["content-type"].ToString();
