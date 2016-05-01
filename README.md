@@ -58,8 +58,8 @@ All [Namara data options](https://namara.io/#/api) are supported.
 
 ```csharp
 Hashtable options = new Hashtable();
-options.Add("select", "town,geometry");
-options.Add("where", "town = 'TORONTO' AND nearby(geometry, 43.6, -79.4, 10km)");
+options.Add("select", "market_nam,website");
+options.Add("where", "town = 'Toronto' AND nearby(geometry, 43.6, -79.4, 10km)");
 options.Add("offset", "0");
 options.Add("limit", "20");
 ```
